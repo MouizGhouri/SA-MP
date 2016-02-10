@@ -9,6 +9,7 @@
 #define COL_GREEN "{00FF00}"
 
 #define COLOR_RED 0xFF0000FF
+#define COLOR_BLUE 0x0000BBAA
 
 new dm[MAX_PLAYERS];
 new Streak[MAX_PLAYERS];
@@ -203,7 +204,7 @@ stock DDM(playerid)
 		{
 			if(dm[i] == 1)
 			{
-			    SendClientMessage(i, 0x0000FF, str);
+			    SendClientMessage(i, COLOR_BLUE, str);
 			}
 		}
 	}
@@ -240,7 +241,7 @@ stock SDM(playerid)
 		{
 			if(dm[i] == 2)
 			{
-			    SendClientMessage(i, 0x0000FF, str);
+			    SendClientMessage(i, COLOR_BLUE, str);
 			}
 		}
 	}
@@ -277,7 +278,7 @@ stock SOSDM(playerid)
 		{
 			if(dm[i] == 3)
 			{
-			    SendClientMessage(i, 0x0000FF, str);
+			    SendClientMessage(i, COLOR_BLUE, str);
 			}
 		}
 	}
@@ -314,7 +315,7 @@ stock LeaveDM(playerid)
 		{
 			if(dm[i] >= 1)
 			{
-			    SendClientMessage(i, 0x0000FF, str);
+			    SendClientMessage(i, COLOR_BLUE, str);
 			}
 		}
 	}
