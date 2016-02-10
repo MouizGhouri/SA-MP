@@ -1,7 +1,6 @@
 #include <a_samp>
 #include <ZCMD>
 #include <foreach>
-#include <sscanf2>
 #include <k_INC/k_functions.inc>
 
 #define FILTERSCRIPT
@@ -107,37 +106,37 @@ public OnPlayerDeath(playerid, killerid, reason)
 		
 		if(Streak[killerid] >= 3)
 		{
-			format(str, sizeof(str),"[DEATHMATCH] %d(%d) is on a Killing Spree!", 4500, 3);
+			format(str, sizeof(str),"[DEATHMATCH] %d(%d) is on a Killing Spree!", GetName(killerid), killerid);
 			SendClientMessageToAll(COLOR_RED ,str);
 			GameTextForPlayer(killerid, "~r~Killing spree", 4500, 1);
 		}
 		if(Streak[killerid] >= 4)
 		{
-			format(str, sizeof(str),"[DEATHMATCH] %d(%d) has done a Quadrakill!", 4500, 3);
+			format(str, sizeof(str),"[DEATHMATCH] %d(%d) has done a Quadrakill!", GetName(killerid), killerid);
 			SendClientMessageToAll(COLOR_RED ,str);
 			GameTextForPlayer(killerid, "~r~Quadrakill", 4500, 1);
 		}
 		if(Streak[killerid] >= 5)
 		{
-			format(str, sizeof(str),"[DEATHMATCH] %d(%d) has done a Pentakill!", 4500, 3);
+			format(str, sizeof(str),"[DEATHMATCH] %d(%d) has done a Pentakill!", GetName(killerid), killerid);
 			SendClientMessageToAll(COLOR_RED ,str);
 			GameTextForPlayer(killerid, "~r~Pentakill", 4500, 1);
 		}
 		if(Streak[killerid] >= 6)
 		{
-			format(str, sizeof(str),"[DEATHMATCH] %d(%d) is Unstoppable!", 4500, 3);
+			format(str, sizeof(str),"[DEATHMATCH] %d(%d) is Unstoppable!", GetName(killerid), killerid);
 			SendClientMessageToAll(COLOR_RED ,str);
 			GameTextForPlayer(killerid, "~r~Unstoppable", 4500, 1);
 		}
 		if(Streak[killerid] >= 7)
 		{
-			format(str, sizeof(str),"[DEATHMATCH] %d(%d) is Dominating!", 4500, 3);
+			format(str, sizeof(str),"[DEATHMATCH] %d(%d) is Dominating!", GetName(killerid), killerid);
 			SendClientMessageToAll(COLOR_RED ,str);
 			GameTextForPlayer(killerid, "~r~Dominating", 4500, 1);
 		}
 		if(Streak[killerid] >= 8)
 		{
-			format(str, sizeof(str),"[DEATHMATCH] %d(%d) is Godlike!", 4500, 3);
+			format(str, sizeof(str),"[DEATHMATCH] %d(%d) is Godlike!", GetName(killerid), killerid);
 			SendClientMessageToAll(COLOR_RED ,str);
 			GameTextForPlayer(killerid, "~r~Godlike!", 4500, 1);
 		}
@@ -196,6 +195,25 @@ public OnPlayerUpdate(playerid)
 
 stock DDM(playerid)
 {
+    new str[100];
+	format(str,sizeof(str),"%s(%d) joined the deagle deathmatch",GetName(playerid), playerid);
+	foreach(Player, i)
+	{
+		if(IsPlayerConnected(i))
+		{
+			if(dm[i] == 1)
+			{
+			    SendClientMessage(i, 0x0000FF, str);
+			}
+		}
+	}
+	
+	for(new i; i < 6; i++) //Just to avoid bugs
+	{
+	    DeletePlayer3DTextLabel(playerid, Info[playerid]);
+	}
+	Info[playerid] = CreatePlayer3DTextLabel(playerid, "Ping: 0\nFPS: 0", -1, 0.0, 0.0, 0.35, 30.0, playerid, INVALID_VEHICLE_ID, 0);
+
 	new rand = random(sizeof(DERandomSpawn));
 	dm[playerid] = 1;
 	SetPlayerArmour(playerid, 0);
@@ -209,16 +227,30 @@ stock DDM(playerid)
 	SetPlayerFacingAngle(playerid, DERandomSpawn[rand][3]);
 	PlayerPlaySound(playerid, 1085, 0.0, 0.0, 0.0);
 	GameTextForPlayer(playerid,"~w~/leavedm ~g~to exit",5000,1);
-	for(new i; i < 6; i++) //Just to avoid bugs
-	{
-	    DeletePlayer3DTextLabel(playerid, Info[playerid]);
-	}
-	Info[playerid] = CreatePlayer3DTextLabel(playerid, "Ping: 0\nFPS: 0", -1, 0.0, 0.0, 0.35, 30.0, playerid, INVALID_VEHICLE_ID, 0);
 	return 1;
 }
 
 stock SDM(playerid)
 {
+    new str[100];
+	format(str,sizeof(str),"%s(%d) joined the sniper deathmatch",GetName(playerid), playerid);
+	foreach(Player, i)
+	{
+		if(IsPlayerConnected(i))
+		{
+			if(dm[i] == 2)
+			{
+			    SendClientMessage(i, 0x0000FF, str);
+			}
+		}
+	}
+	
+	for(new i; i < 6; i++) //Just to avoid bugs
+	{
+	    DeletePlayer3DTextLabel(playerid, Info[playerid]);
+	}
+	Info[playerid] = CreatePlayer3DTextLabel(playerid, "Ping: 0\nFPS: 0", -1, 0.0, 0.0, 0.35, 30.0, playerid, INVALID_VEHICLE_ID, 0);
+	
 	new rand = random(sizeof(SDMRandomSpawn));
 	dm[playerid] = 2;
 	SetPlayerArmour(playerid, 0);
@@ -232,16 +264,30 @@ stock SDM(playerid)
 	ResetPlayerWeapons(playerid);
 	GivePlayerWeapon(playerid, 34, 999999);
 	GameTextForPlayer(playerid,"~w~/leavedm ~g~to exit",5000,1);
-	for(new i; i < 6; i++) //Just to avoid bugs
-	{
-	    DeletePlayer3DTextLabel(playerid, Info[playerid]);
-	}
-	Info[playerid] = CreatePlayer3DTextLabel(playerid, "Ping: 0\nFPS: 0", -1, 0.0, 0.0, 0.35, 30.0, playerid, INVALID_VEHICLE_ID, 0);
 	return 1;
 }
 
 stock SOSDM(playerid)
 {
+    new str[100];
+	format(str,sizeof(str),"%s(%d) joined the sawn-off shotgun deathmatch",GetName(playerid), playerid);
+	foreach(Player, i)
+	{
+		if(IsPlayerConnected(i))
+		{
+			if(dm[i] == 3)
+			{
+			    SendClientMessage(i, 0x0000FF, str);
+			}
+		}
+	}
+	
+	for(new i; i < 6; i++) //Just to avoid bugs
+	{
+	    DeletePlayer3DTextLabel(playerid, Info[playerid]);
+	}
+	Info[playerid] = CreatePlayer3DTextLabel(playerid, "Ping: 0\nFPS: 0", -1, 0.0, 0.0, 0.35, 30.0, playerid, INVALID_VEHICLE_ID, 0);
+	
 	new rand = random(sizeof(SOSRandomSpawn));
 	dm[playerid] = 3;
 	SetPlayerHealth(playerid, 100);
@@ -255,16 +301,29 @@ stock SOSDM(playerid)
 	ResetPlayerWeapons(playerid);
 	GivePlayerWeapon(playerid, 26, 999999);
 	GameTextForPlayer(playerid,"~w~/leavedm ~g~to exit",5000,1);
-	for(new i; i < 6; i++) //Just to avoid bugs
-	{
-	    DeletePlayer3DTextLabel(playerid, Info[playerid]);
-	}
-	Info[playerid] = CreatePlayer3DTextLabel(playerid, "Ping: 0\nFPS: 0", -1, 0.0, 0.0, 0.35, 30.0, playerid, INVALID_VEHICLE_ID, 0);
 	return 1;
 }
 
 stock LeaveDM(playerid)
 {
+    new str[100];
+	format(str,sizeof(str),"%s(%d) has left the deathmatch",GetName(playerid), playerid);
+	foreach(Player, i)
+	{
+		if(IsPlayerConnected(i))
+		{
+			if(dm[i] >= 1)
+			{
+			    SendClientMessage(i, 0x0000FF, str);
+			}
+		}
+	}
+	
+	for(new i; i < 6; i++)
+	{
+	    DeletePlayer3DTextLabel(playerid, Info[playerid]);
+	}
+	
 	dm[playerid] = 0;
 	SetPlayerHealth(playerid, 0);
 	SetPlayerArmour(playerid, 0);
@@ -272,10 +331,6 @@ stock LeaveDM(playerid)
 	SetPlayerInterior(playerid, 0);
 	SetPlayerVirtualWorld(playerid, 0);
 	ResetPlayerWeapons(playerid);
-	for(new i; i < 6; i++) //Just to avoid bugs
-	{
-	    DeletePlayer3DTextLabel(playerid, Info[playerid]);
-	}
 	return 1;
 }
 
