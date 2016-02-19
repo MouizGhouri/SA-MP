@@ -34,7 +34,11 @@ new ColorsTag[][ColorEnum] =
         {"Orange", "FFA600"},
         {"Grey",   "B8B8B8"},
         {"Purple", "7340DB"},
-        {"Pink",   "FF00EE"}
+        {"Pink",   "FF00EE"},
+	{"Cyan",   "00FFFF"},
+	{"Black",  "000000"},
+	{"Brown",  "800000"},
+	{"Lime",   "00FF00"}
 };
 
 stock ColouredText(text[])
