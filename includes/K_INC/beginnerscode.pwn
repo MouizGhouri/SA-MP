@@ -16,21 +16,27 @@ forward KickTimer(playerid);
 
 #define PLAYER 																	playerid
 
-#define EQUAL_TO 																==
+#define VARIABLE                                                                new
 
-#define GREATER_THAN 															>
+#define VAR                                              		                new
 
-#define LESS_THAN 																<
+#define IS_EQUAL_TO 															==
 
-#define GREATER_OR_EQUAL 														>=
+#define IS_GREATER_THAN 														>
 
-#define LESS_OR_EQUAL 															<=
+#define IS_LESS_THAN 															<
+
+#define IS_GREATER_OR_EQUAL 													>=
+
+#define IS_LESS_OR_EQUAL 														<=
 
 #define ADD 																	+
 
 #define SUBTRACT 																-
 
-#define VARIABLE 																new
+#define MULTIPLY                                                                *
+
+#define DIVIDE                                                                  /
 
 #define NULL 																	0
 
@@ -39,6 +45,8 @@ forward KickTimer(playerid);
 #define SET                                                                     enum
 
 #define ARRAY_END                                                               };
+
+#define RETURN_VALUE                                                            return
 
 #define PAWN_WHITE                                                              0xFFFFFF
 
@@ -49,6 +57,8 @@ forward KickTimer(playerid);
 #define HEX_BLACK                                                               {000000}
 
 #define LOG_CONSOLE                                                             print
+
+#define function                                                                public
 
 //Functions
 
