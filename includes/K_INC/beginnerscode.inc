@@ -48,14 +48,6 @@ forward KickTimer(playerid);
 
 #define RETURN_VALUE                                                            return
 
-#define PAWN_WHITE                                                              0xFFFFFF
-
-#define HEX_WHITE                                                               {FFFFFF}
-
-#define PAWN_BLACK                                                              0x000000
-
-#define HEX_BLACK                                                               {000000}
-
 #define LOG_CONSOLE                                                             print
 
 #define function                                                                public
