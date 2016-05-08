@@ -1,7 +1,5 @@
 #include <a_samp>
 
-forward KickTimer(playerid);
-
 //Defines
 
 #define END                                                                     ;
