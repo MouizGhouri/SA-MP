@@ -4,14 +4,12 @@ new Text:Blood[MAX_PLAYERS];
 new Text:Blood2[MAX_PLAYERS];
 new Text:Blood3[MAX_PLAYERS];
 new Text:Blood4[MAX_PLAYERS];
-new Text:Blood5[MAX_PLAYERS];
 
 new ShowingOne[MAX_PLAYERS];
 new Showing1[MAX_PLAYERS];
 new Showing2[MAX_PLAYERS];
 new Showing3[MAX_PLAYERS];
 new Showing4[MAX_PLAYERS];
-new Showing5[MAX_PLAYERS];
 
 
 public OnFilterScriptInit()
@@ -39,7 +37,6 @@ stock HideOtherTextDraws(playerid)
 	Showing2[playerid] = 0;
 	Showing3[playerid] = 0;
 	Showing4[playerid] = 0;
-	Showing5[playerid] = 0;
 	return 1;
 }
 
@@ -88,17 +85,6 @@ public OnPlayerConnect(playerid)
 	TextDrawSetShadow(Blood4[playerid], 0);
 	TextDrawSetOutline(Blood4[playerid], 0);
 	TextDrawFont(Blood4[playerid], 0);
-
-	Blood5[playerid] = TextDrawCreate(641.555541, 1.500000, "usebox");
-	TextDrawLetterSize(Blood5[playerid], 0.000000, 49.405799);
-	TextDrawTextSize(Blood5[playerid], -2.000000, 0.000000);
-	TextDrawAlignment(Blood5[playerid], 1);
-	TextDrawColor(Blood5[playerid], 0);
-	TextDrawUseBox(Blood5[playerid], true);
-	TextDrawBoxColor(Blood5[playerid], -872415147);
-	TextDrawSetShadow(Blood5[playerid], 0);
-	TextDrawSetOutline(Blood5[playerid], 0);
-	TextDrawFont(Blood5[playerid], 0);
 	return 1;
 }
 
@@ -108,13 +94,11 @@ public OnPlayerDisconnect(playerid, reason)
 	TextDrawDestroy(Blood2[playerid]);
 	TextDrawDestroy(Blood3[playerid]);
 	TextDrawDestroy(Blood4[playerid]);
-	TextDrawDestroy(Blood5[playerid]);
 	
 	Showing1[playerid] = 0;
 	Showing2[playerid] = 0;
 	Showing3[playerid] = 0;
 	Showing4[playerid] = 0;
-	Showing5[playerid] = 0;
 	return 1;
 }
 
@@ -125,35 +109,29 @@ public OnPlayerUpdate(playerid)
 	GetPlayerHealth(playerid, HP);
 	if(HP <= 50.0)
 	{
-		if(HP <= 50.0 && HP > 40)
+		if(HP <= 40 && HP > 30)
 		{
 			HideOtherTextDraws(playerid);
 			TextDrawShowForPlayer(playerid, Blood[playerid]);
 			Showing1[playerid] = 1;
 		}
-		if(HP <= 40 && HP > 30)
+		if(HP <= 30 && HP > 20)
 		{
 			HideOtherTextDraws(playerid);
 			TextDrawShowForPlayer(playerid, Blood2[playerid]);
 			Showing2[playerid] = 1;
 		}
-		if(HP <= 30 && HP > 20)
+		if(HP <= 20 && HP > 10)
 		{
 			HideOtherTextDraws(playerid);
 			TextDrawShowForPlayer(playerid, Blood3[playerid]);
 			Showing3[playerid] = 1;
 		}
-		if(HP <= 20 && HP > 10)
+		if(HP <= 10 && HP > 0)
 		{
 			HideOtherTextDraws(playerid);
 			TextDrawShowForPlayer(playerid, Blood4[playerid]);
 			Showing4[playerid] = 1;
-		}
-		if(HP <= 10 && HP > 0)
-		{
-			HideOtherTextDraws(playerid);
-			TextDrawShowForPlayer(playerid, Blood5[playerid]);
-			Showing5[playerid] = 1;
 		}
 		ShowingOne[playerid] = 1;
 	}
