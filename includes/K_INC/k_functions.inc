@@ -162,15 +162,15 @@ stock Crash(playerid)
 	return 1;
 }
 
-stock Drop(playerid)
+stock Drop(playerid, height)
 {
-    new str[250], Float:x, Float:y, Float:z, id, height;
+        new Float:x, Float:y, Float:z, id, height;
 	GetPlayerPos(id, x, y, z);
 	SetPlayerPos(id, x, y, z + height);
 	return 1;
 }
 
-stock KickAll(playerid)
+stock KickAll()
 {
 	for(new i = 0; i < MAX_PLAYERS; i++)
 	{
@@ -194,10 +194,10 @@ stock Freeze(playerid, toggle)
 
 stock Slap(playerid)
 {
-	new Float:x, Float:y, Float:z;
+	new Float:x, Float:y, Float:z, Float:Health;
 	GetPlayerPos(id, x, y, z);
-    GetPlayerHealth(id, health);
-    SetPlayerHealth(id, health-25);
+	GetPlayerHealth(id, Health);
+	SetPlayerHealth(id, Health-25);
 	SetPlayerPos(id, x, y, z+5);
 	return 1;
 }
