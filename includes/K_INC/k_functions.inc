@@ -302,7 +302,7 @@ stock Teleport(playerid, Float:x, Float:y, Float:z, Float:FacingAngle, world, in
 
 stock ClearChat(playerid, lines)
 {
-	lines = 50;
+	if(lines == 0) lines = 50;
 	for (new i = 0; i < lines; i++)
 	{
 		SendClientMessage(playerid, 0xFFFFFFFF, " ");
