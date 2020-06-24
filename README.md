@@ -1,3 +1,3 @@
 # SA-MP (Good Ol' Days)
 
-This is the repostory where i posted all the scripts i've written in PAWN language, (back when i was 12/13) for the multiplayer modification of the game called Grand Theft Auto SanAndreas that were intended for public release.
+This is the repostory where I posted all the scripts I've written in PAWN language which were intended for public release (back when i was 12 or 13 y.o) for the multiplayer modification of the game called Grand Theft Auto San Andreas.
