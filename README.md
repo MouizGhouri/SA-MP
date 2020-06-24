@@ -1,5 +1,3 @@
-# SA-MP
-San Andreas Multiplayer [SA-MP]
+# SA-MP (Good Ol' Days)
 
-This is a repository where i post all the codes that are made by me.
-I will try to keep the old version of the files too (In future) but for now all the codes will be in updated version.
+This is the repostory where i posted all the scripts i've written in PAWN language, (back when i was 12/13) for the multiplayer modification of the game called Grand Theft Auto SanAndreas that were intended for public release.
